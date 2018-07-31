@@ -89,7 +89,7 @@ define letsencrypt::certonly (
       $renewcommand = $croncommand
     }
     if $cron_success_command {
-      $cron_cmd = "${renewcommand} && (${cron_success_command})"
+      $cron_cmd = "${renewcommand} --deploy-hook '${cron_success_command}'"
     } else {
       $cron_cmd = $renewcommand
     }
